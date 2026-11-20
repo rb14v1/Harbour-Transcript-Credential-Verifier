@@ -4,6 +4,8 @@ COPY package.json package-lock.json* ./
 RUN npm install
 COPY . .
 EXPOSE 8080
+RUN chown -R node:node /app
+USER node
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 
 FROM node:22-alpine AS build
