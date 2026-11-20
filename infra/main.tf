@@ -140,6 +140,7 @@ resource "azurerm_storage_account" "blob" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   public_network_access_enabled = false
+  min_tls_version               = "TLS1_2"
   # Azure Policy "Storage account public access should be disallowed" denies the create outright without this,
   # and the two settings are not the same thing: public_network_access_enabled above closes the network path,
   # while this controls whether individual blobs may be marked public. The azurerm provider defaults it to true,
